@@ -1,0 +1,38 @@
+# .gitignore
+
+# Arquivos e diretórios específicos do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ambiente virtual (assumindo que você use virtualenv)
+venv/
+
+# Arquivos de configuração do sistema
+*.DS_Store
+
+# Arquivos de log
+*.log
+
+# Arquivos temporários
+*.tmp
+
+# Banco de dados SQLite
+db.sqlite3
+
+# Arquivos de mídia
+media/
+
+# Arquivos de compilação
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos de configuração do IDE
+.idea/
+.vscode/
+
+# Arquivos gerados pelo sistema operacional
+Thumbs.db
+Desktop.ini
