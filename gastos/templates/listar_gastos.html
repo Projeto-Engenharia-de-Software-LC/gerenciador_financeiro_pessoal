@@ -1,0 +1,22 @@
+<!-- gastos/templates/gastos/listar_gastos.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listar Gastos</title>
+</head>
+<body>
+    <h1>Listagem de Gastos</h1>
+
+    <ul>
+        {% for gasto in gastos %}
+            <li>
+                <strong>Categoria:</strong> {{ gasto.categoria }}<br>
+                <strong>Valor:</strong> {{ gasto.valor }}<br>
+                <strong>Período:</strong> {{ gasto.periodo }}<br>
+                <!-- Adicione outros campos conforme necessário -->
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
