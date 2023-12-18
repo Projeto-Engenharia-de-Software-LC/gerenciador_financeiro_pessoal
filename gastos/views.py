@@ -12,7 +12,7 @@ def atualizar_gasto(request, pk):
     if form.is_valid():
         form.save()
         return redirect('listar_gastos')
-    return render(request, 'cadastrar_gasto.html', {'form': form})
+    return render(request, 'atualizar_gasto.html', {'form': form, 'gasto': gasto})
 
 def remover_gasto(request, pk):
     gasto = get_object_or_404(Gasto, pk=pk)
