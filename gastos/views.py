@@ -6,8 +6,7 @@ from .models import Gasto
 def home(request):
     return render(request,'home.html')
 
-def atualizar_gasto(self,request, pk):
-    print("aqui");
+def atualizar_gasto(request, pk):
     gasto = Gasto.objects.get(pk=pk)
     form = GastoForm(request.POST or None, instance=gasto)
     if form.is_valid():
