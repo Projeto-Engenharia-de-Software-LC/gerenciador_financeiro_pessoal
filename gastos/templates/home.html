@@ -14,22 +14,16 @@
     <nav style="background-color: bisque !important;" class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1">Gerenciador Financeiro Pessoal</span>
-          <a href="{% url 'home' %}"><button type="submit" >Home</button></a>
         </div>
       </nav>
     <div  style="text-align: center;"  class = "container" >
-        <h2>Cadastro de Gastos</h2>
+        <h2>O que deseja fazer?</h2>
 
-        <form method="post" action="{% url 'cadastrar_gasto' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-
-            <button type="submit">Cadastrar Gasto</button>
+            <a href="{% url 'cadastrar_gasto' %}"><button type="submit" >Cadastrar Gasto</button></a>
+            <a href="{% url 'listar_gastos' %}"><button type="submit" >Atualizar Gasto</button></a>
+            <a href="{% url 'listar_gastos' %}"><button type="submit" >Listar Gasto</button></a>
             
           
-
-        </form>
-    
     </div>
     
 

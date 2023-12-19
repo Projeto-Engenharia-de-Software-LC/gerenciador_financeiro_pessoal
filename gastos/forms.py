@@ -8,3 +8,5 @@ class GastoForm(forms.ModelForm):
     class Meta:
         model = Gasto
         fields = ['categoria', 'valor', 'periodo']
+
+

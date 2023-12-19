@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listar Gastos</title>
+</head>
+<body>
+    <h1>Confirmar Remoção</h1>
+    <p>Você tem certeza que deseja remover o gasto "{{ gasto.descricao }}"?</p>
+    <form method="post" action="{% url 'remover_gasto' pk=gasto.pk %}">
+        {% csrf_token %}
+        <input type="submit" value="Sim, remover">
+    </form>    
+</body>
+</html>
