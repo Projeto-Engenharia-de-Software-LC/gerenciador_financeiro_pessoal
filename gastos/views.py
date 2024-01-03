@@ -1,7 +1,8 @@
 # gastos/views.py
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import GastoForm
-from .models import Gasto
+from .forms import GastoForm, UsuarioForm, ReceitaForm, LoginForm
+from django.contrib.auth import authenticate, login
+from .models import Gasto, PerfilUsuario, Receita
 
 def home(request):
     return render(request,'home.html')
@@ -35,3 +36,46 @@ def cadastrar_gasto(request):
     else:
         form = GastoForm()
     return render(request, 'cadastrar_gasto.html', {'form': form})
+
+    def login(request):
+        if request.method == 'POST':
+            form = LoginForm(request, request.POST)
+            if form.is_valid():
+                user = authenticate(request, username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+                if user is not None:
+                    login(request, user)
+                    return redirect('home.html')  
+        else:
+            form = LoginForm()
+        return render(request, 'login.html', {'form': form})
+
+def cadastrar_usuario(request):
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            user= form.save()
+            login(request, user)
+            return redirect('home.html')  # Substitua 'index' pelo nome da sua página inicial
+    else:
+        form = UsuarioForm()
+    return render(request, 'cadastrar_usuario.html', {'form': form})
+
+def cadastrar_receita(request):
+    if request.method == 'POST':
+        form = ReceitaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home.html')  # Substitua 'index' pelo nome da sua página inicial
+    else:
+        form = ReceitaForm()
+    return render(request, 'cadastrar_receita.html', {'form': form})
+
+
+def quem_somos(request):
+    return render(request,'quem_somos.html')
+
+def guia_completo(request):
+    return render(request,'guia_completo.html')
+
+def configuracoes(request):
+    return render(request,'configuracoes.html')

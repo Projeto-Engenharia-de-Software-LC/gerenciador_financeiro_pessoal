@@ -1,0 +1,57 @@
+{% extends 'base_home.html' %}
+
+{% block conteudo %} 
+    <div  style="text-align: center;"  class = "container" >
+        <h2>Administre suas despesas, O que deseja fazer?</h2>
+
+        <a href="{% url 'cadastrar_gasto' %}"><button type="submit" >Cadastrar Gasto</button></a>
+        <a href="{% url 'listar_gastos' %}"><button type="submit" >Atualizar Gasto</button></a>
+        <a href="{% url 'listar_gastos' %}"><button type="submit" >Listar Gasto</button></a>
+        
+      
+    </div>
+        
+{% endblock %}
+
+{% block conteudo1 %} 
+    <div  style="text-align: center;"  class = "container" >
+        <h2>Administre suas receitas, O que deseja fazer?</h2>
+
+        <a href="{% url 'cadastrar_receita' %}"><button type="submit" >Cadastrar Receita</button></a>
+       
+    
+  
+    </div>
+        
+{% endblock %}
+
+{% block conteudo2 %} 
+    <div  style="text-align: center;"  class = "container" >
+        <h2>Seus Dados</h2>
+
+       
+        
+    </div>
+        
+{% endblock %}
+
+{% block conteudo3 %} 
+    <div  style="text-align: center;"  class = "container" >
+        <h2>Administre seus investimentos! O que deseja fazer?</h2>
+
+        
+
+
+    </div>
+        
+{% endblock %}
+
+{% block conteudo4 %} 
+    <div  style="text-align: center;"  class = "container" >
+        <h2>Relatórios</h2>
+
+       
+    
+    </div> 
+        
+{% endblock %}

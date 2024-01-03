@@ -1,21 +1,21 @@
 <!-- gastos/templates/gastos/listar_gastos.html -->
+{% extends 'base_logado.html' %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Listar Gastos</title>
-</head>
-<body>
-    <h1>Listagem de Gastos</h1>
-    <ul>
-        {% for gasto in gastos %}
-          <li>{{ gasto.categoria }} - {{ gasto.valor }} - {{ gasto.periodo }} 
+{% block conteudo %} 
+    <div  style="text-align: center;"  class = "container" >
+
+      <h2>Listagem de Gastos</h2>
+      <ul>
+          {% for gasto in gastos %}
+            <li>{{ gasto.categoria }} - {{ gasto.valor }} - {{ gasto.periodo }} 
               <a href="{% url 'atualizar_gasto' pk=gasto.pk %}">Atualizar</a>
               <a href="{% url 'remover_gasto' pk=gasto.pk %}">Remover</a>
               
-          </li>
-        {% endfor %}
-      </ul>
-      <a href="{% url 'home' %}"><button type="submit" >Home</button></a>
-</body>
-</html>
+            </li>
+          {% endfor %}
+        </ul>
+        
+    
+    </div>
+{% endblock %}     
+
