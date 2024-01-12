@@ -1,8 +1,8 @@
 # gastos/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import GastoForm, UsuarioForm, ReceitaForm, LoginForm
-from django.contrib.auth import authenticate, login
-from .models import Gasto, PerfilUsuario, Receita
+from django.contrib.auth import authenticate, login  
+from .models import Gasto, Usuario, Receita
 
 def home(request):
     return render(request,'home.html')
@@ -37,25 +37,27 @@ def cadastrar_gasto(request):
         form = GastoForm()
     return render(request, 'cadastrar_gasto.html', {'form': form})
 
-    def login(request):
-        if request.method == 'POST':
-            form = LoginForm(request, request.POST)
-            if form.is_valid():
-                user = authenticate(request, username=form.cleaned_data['username'], password=form.cleaned_data['password'])
-                if user is not None:
-                    login(request, user)
-                    return redirect('home.html')  
-        else:
-            form = LoginForm()
-        return render(request, 'login.html', {'form': form})
+def login_usuario(request):
+    if request.method == 'POST':
+        form = LoginForm(request, request.POST)
+        if form.is_valid():
+            login_usuario(request, form.get_user())
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                #login_usuario(request, user)
+                return redirect('home_logado')
+                
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
 
 def cadastrar_usuario(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
         if form.is_valid():
             user= form.save()
-            login(request, user)
-            return redirect('home.html')  # Substitua 'index' pelo nome da sua página inicial
+            return redirect('login')  # Substitua 'index' pelo nome da sua página inicial
+            login_usuario(request, user)
     else:
         form = UsuarioForm()
     return render(request, 'cadastrar_usuario.html', {'form': form})
@@ -79,3 +81,6 @@ def guia_completo(request):
 
 def configuracoes(request):
     return render(request,'configuracoes.html')
+
+def home_logado(request):
+    return render(request,'home_logado.html')

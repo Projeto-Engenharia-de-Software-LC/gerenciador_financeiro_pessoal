@@ -1,6 +1,6 @@
 # gastos/urls.py
 from django.urls import path
-from .views import home, listar_gastos, cadastrar_gasto, atualizar_gasto, remover_gasto, cadastrar_usuario, cadastrar_receita, login, quem_somos, guia_completo,configuracoes
+from .views import home, listar_gastos, cadastrar_gasto, atualizar_gasto, remover_gasto, cadastrar_usuario, cadastrar_receita, login_usuario, quem_somos, guia_completo,configuracoes,home_logado
 from gastos import views
 
 urlpatterns = [
@@ -11,9 +11,10 @@ urlpatterns = [
     path('gastos/<int:pk>/remover/', remover_gasto, name='remover_gasto'),
     path('cadastrar_usuario/', cadastrar_usuario, name='cadastrar_usuario'),
     path('cadastrar_receita/', cadastrar_receita, name='cadastrar_receita'),
-    path('login/', login, name='login'),
+    path('login/', login_usuario, name='login'),
     path('quem_somos/', quem_somos, name='quem_somos'),
     path('guia_completo/', guia_completo, name='guia_completo'),
-    path('configuracoes/', configuracoes, name='configuracoes')
+    path('configuracoes/', configuracoes, name='configuracoes'),
+    path('home_logado/', home_logado, name='home_logado')
     
 ]

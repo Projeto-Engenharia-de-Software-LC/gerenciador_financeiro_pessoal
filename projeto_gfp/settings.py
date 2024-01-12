@@ -123,11 +123,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'statcfiles')
 
 MEDIA_URL = '/images/'
 
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static')
-   
-]
 
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+AUTH_USER_MODEL = "gastos.CustomUser" 
 
 
 # Default primary key field type
