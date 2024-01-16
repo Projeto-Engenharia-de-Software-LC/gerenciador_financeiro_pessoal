@@ -62,6 +62,22 @@ def cadastrar_usuario(request):
         form = UsuarioForm()
     return render(request, 'cadastrar_usuario.html', {'form': form})
 
+def atualizar_usuario(request, pk):
+    username = get_object_or_404(Usuario, pk=pk)
+    if request.method == "POST":
+        form = UsuarioForm(request.POST, instance=username)
+        if form.is_valid():
+            username = form.save(commit=False)
+            uusername.save()
+            return redirect('listar_usuario', pk=username.pk)
+    else:
+        form = UsuarioForm(instance=username)
+    return render(request, 'atualizar_usuario.html', {'form': form})
+
+def listar_usuario(request):
+    usuario = Usuario.objects.all()
+    return render(request, 'listar_usuario.html', {'usuario': usuario})
+
 def cadastrar_receita(request):
     if request.method == 'POST':
         form = ReceitaForm(request.POST)
@@ -72,6 +88,24 @@ def cadastrar_receita(request):
         form = ReceitaForm()
     return render(request, 'cadastrar_receita.html', {'form': form})
 
+def atualizar_receita(request, pk):
+    receita = Receita.objects.get(pk=pk)
+    form = ReceitaForm(request.POST or None, instance=receita)
+    if form.is_valid():
+        form.save()
+        return redirect('listar_receita')
+    return render(request, 'atualizar_receita.html', {'form': form, 'receita': receita})
+
+def listar_receita(request):
+    receitas = Receita.objects.all()
+    return render(request, 'listar_receita.html', {'receitas': receitas})
+
+def remover_receita(request, pk):
+    receita = get_object_or_404(Receita, pk=pk)
+    if request.method == 'POST':
+        receita.delete()
+        return redirect('listar_receita')
+    return render(request, 'deletar_receita.html', {'receita': receita})
 
 def quem_somos(request):
     return render(request,'quem_somos.html')

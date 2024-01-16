@@ -14,7 +14,7 @@ class Usuario(models.Model):
     password = models.CharField(max_length=8)
 
     def __str__(self):
-        return f"{self.username} - {self.email} - {self.password}"
+        return f"{self.username} - {self.email}"
 
 class Receita(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)

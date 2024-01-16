@@ -17,11 +17,11 @@ class UsuarioForm(forms.ModelForm):
 class ReceitaForm(forms.ModelForm):
     class Meta:
         model = Receita
-        fields = '__all__'
+        fields = ['categoria', 'valor', 'periodo','usuario']
 
 class GastoForm(forms.ModelForm):
     class Meta:
         model = Gasto
-        fields = ['categoria', 'valor', 'periodo']
+        fields = ['categoria', 'valor', 'periodo','usuario']
 
 

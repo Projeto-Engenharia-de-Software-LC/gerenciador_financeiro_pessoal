@@ -1,4 +1,4 @@
-{% extends 'base_home.html' %}
+{% extends 'base_logado.html' %}
 
 {% block conteudo %} 
     <div  style="text-align: center;"  class = "container" >
@@ -10,7 +10,7 @@
         
       
     </div>
-        
+    
 {% endblock %}
 
 {% block conteudo1 %} 
@@ -18,6 +18,9 @@
         <h2>Administre suas receitas, O que deseja fazer?</h2>
 
         <a href="{% url 'cadastrar_receita' %}"><button type="submit" >Cadastrar Receita</button></a>
+        <a href="{% url 'listar_receita' %}"><button type="submit" >Atualizar Receita</button></a>
+        <a href="{% url 'listar_receita' %}"><button type="submit" >Listar Receita</button></a>
+        
        
     
   
@@ -28,7 +31,7 @@
 {% block conteudo2 %} 
     <div  style="text-align: center;"  class = "container" >
         <h2>Seus Dados</h2>
-
+        <a href="{% url 'atualizar_usuario' %}"><button type="submit" >Atualizar dados</button></a>
        
         
     </div>
