@@ -83,7 +83,7 @@ def cadastrar_receita(request):
         form = ReceitaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home.html')  # Substitua 'index' pelo nome da sua página inicial
+            return redirect('home') 
     else:
         form = ReceitaForm()
     return render(request, 'cadastrar_receita.html', {'form': form})
