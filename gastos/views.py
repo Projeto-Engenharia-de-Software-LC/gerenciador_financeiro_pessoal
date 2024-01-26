@@ -44,7 +44,7 @@ def login_usuario(request):
             login_usuario(request, form.get_user())
             user = authenticate(username=username, password=password)
             if user is not None:
-                #login_usuario(request, user)
+                login_usuario(request, user)
                 return redirect('home_logado')
                 
     else:
