@@ -1,17 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 class CustomUser(AbstractUser):
     # Adicione campos personalizados, se necessário
     pass
-    
+
 
 class Usuario(models.Model):
     username = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
-    password = models.CharField(max_length=8)
+    password = models.CharField(max_length=20)
+    confirm_password = models.CharField(max_length=20)
+
+    
 
     def __str__(self):
         return f"{self.username} - {self.email}"

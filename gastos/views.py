@@ -40,11 +40,11 @@ def cadastrar_gasto(request):
 def login_usuario(request):
     if request.method == 'POST':
         form = LoginForm(request, request.POST)
-        if form.is_valid():
-            login_usuario(request, form.get_user())
-            user = authenticate(username=username, password=password)
+        if form.is_valid():            
+            usuario = form.get_user()
+            user = authenticate(username=usuario.username, password=usuario.password)
             if user is not None:
-                login_usuario(request, user)
+                login_usuario(request)
                 return redirect('home_logado')
                 
     else:
@@ -56,8 +56,8 @@ def cadastrar_usuario(request):
         form = UsuarioForm(request.POST)
         if form.is_valid():
             user= form.save()
+            login_usuario(request)
             return redirect('login')  # Substitua 'index' pelo nome da sua página inicial
-            login_usuario(request, user)
     else:
         form = UsuarioForm()
     return render(request, 'cadastrar_usuario.html', {'form': form})
@@ -68,8 +68,8 @@ def atualizar_usuario(request, pk):
         form = UsuarioForm(request.POST, instance=username)
         if form.is_valid():
             username = form.save(commit=False)
-            uusername.save()
-            return redirect('listar_usuario', pk=username.pk)
+            username.save()
+            return redirect('listar_usuario', pk=username.pk())
     else:
         form = UsuarioForm(instance=username)
     return render(request, 'atualizar_usuario.html', {'form': form})

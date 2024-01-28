@@ -4,6 +4,7 @@ from django import forms
 from .models import Gasto, Receita, Usuario
 from django.contrib.auth.forms import AuthenticationForm
 
+
 class LoginForm(AuthenticationForm):
     class Meta:
         model = Usuario

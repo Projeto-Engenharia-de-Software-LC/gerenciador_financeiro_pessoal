@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gastos',
+    
 ]
 
 MIDDLEWARE = [
@@ -125,13 +127,15 @@ MEDIA_URL = '/images/'
 
 
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
-
-AUTH_USER_MODEL = "gastos.CustomUser" 
-
+LOGIN_REDIRECT_URL = 'home_logado'
+LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL ='login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Envio de e-mail
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
