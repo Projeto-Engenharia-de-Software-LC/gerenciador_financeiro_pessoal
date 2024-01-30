@@ -41,8 +41,7 @@ def login_usuario(request):
     if request.method == 'POST':
         form = LoginForm(request, request.POST)
         if form.is_valid():
-            login_usuario(request, form.get_user())
-            user = authenticate(username=username, password=password)
+            user = form.get_user()
             if user is not None:
                 login_usuario(request, user)
                 return redirect('home_logado')
@@ -56,8 +55,9 @@ def cadastrar_usuario(request):
         form = UsuarioForm(request.POST)
         if form.is_valid():
             user= form.save()
-            return redirect('login')  # Substitua 'index' pelo nome da sua página inicial
             login_usuario(request, user)
+            return redirect('login')  # Substitua 'index' pelo nome da sua página inicial
+            
     else:
         form = UsuarioForm()
     return render(request, 'cadastrar_usuario.html', {'form': form})

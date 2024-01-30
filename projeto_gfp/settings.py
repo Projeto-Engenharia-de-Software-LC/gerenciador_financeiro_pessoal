@@ -125,7 +125,7 @@ MEDIA_URL = '/images/'
 
 
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/home_logado'
 LOGOUT_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = "gastos.CustomUser" 
@@ -135,3 +135,7 @@ AUTH_USER_MODEL = "gastos.CustomUser"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
