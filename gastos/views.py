@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import GastoForm, UsuarioForm, ReceitaForm, LoginForm
 from django.contrib.auth import authenticate, login  
 from .models import Gasto, Usuario, Receita
+from django.db.models import Sum
 
 def home(request):
     return render(request,'home.html')
@@ -43,7 +44,9 @@ def login_usuario(request):
         if form.is_valid():
             user = form.get_user()
             if user is not None:
-                login_usuario(request, user)
+                login(request, user)
+                user.is_staff = True
+                is_active=True
                 return redirect('home_logado')
                 
     else:
@@ -55,7 +58,7 @@ def cadastrar_usuario(request):
         form = UsuarioForm(request.POST)
         if form.is_valid():
             user= form.save()
-            login_usuario(request, user)
+            #login_usuario(request, user)
             return redirect('login')  # Substitua 'index' pelo nome da sua página inicial
             
     else:
@@ -106,6 +109,15 @@ def remover_receita(request, pk):
         receita.delete()
         return redirect('listar_receita')
     return render(request, 'deletar_receita.html', {'receita': receita})
+
+def relatorio_gastos_receitas(request):
+    receitas = Receita.objects.all()
+    gastos = Gasto.objects.all()
+    total_gastos = Gasto.objects.aggregate(Sum('valor'))['valor__sum'] or 0
+    total_receitas = Receita.objects.aggregate(Sum('valor'))['valor__sum'] or 0
+    diferenca = total_receitas - total_gastos
+
+    return render(request, 'relatorio.html', {'receitas':receitas,'gastos': gastos,'total_gastos': total_gastos, 'total_receitas': total_receitas, 'diferenca': diferenca})
 
 def quem_somos(request):
     return render(request,'quem_somos.html')

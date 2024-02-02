@@ -1,0 +1,29 @@
+{% extends 'base_home.html' %}
+
+{% block conteudo %}
+    
+    <h2>Relatório de Gastos e Receitas</h2>
+    <p>Gastos</p>
+        <ul>
+            {% for gasto in gastos %}
+                <li>{{ gasto.categoria }} - {{ gasto.valor }} - {{ gasto.periodo }} </li>
+            {% endfor %}
+        </ul>
+    
+    <p>Receitas</p>
+        <ul>
+            {% for receita in receitas %}
+                <li>{{ receita.categoria }} - {{ receita.valor }} - {{ receita.periodo }} </li>
+            {% endfor %}
+        </ul>
+    <p>Total de Gastos: R$ {{ total_gastos }}</p>
+    <p>Total de Receitas: R$ {{ total_receitas }}</p>
+    <p>Diferença: R$ {{ diferenca }}</p>
+
+{% endblock %}
+
+{% block conteudo1 %}
+{% load static %}
+<img src= "{% static 'gastos/images/relatorios.png' %}" class="card-img-top" style="width: 500px" alt="relatório"/>
+
+{% endblock %}

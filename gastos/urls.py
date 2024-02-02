@@ -1,6 +1,6 @@
 # gastos/urls.py
 from django.urls import path
-from .views import home, listar_gastos, cadastrar_gasto, atualizar_gasto, remover_gasto, cadastrar_usuario, cadastrar_receita, login_usuario, quem_somos, guia_completo,configuracoes,home_logado,atualizar_usuario, listar_usuario, atualizar_receita, listar_receita, remover_receita, atualizar_usuario, listar_usuario, atualizar_receita, listar_receita, remover_receita
+from .views import home, listar_gastos, cadastrar_gasto, atualizar_gasto, remover_gasto, cadastrar_usuario, cadastrar_receita, login_usuario, quem_somos, guia_completo,configuracoes,home_logado,atualizar_usuario, listar_usuario, atualizar_receita, listar_receita, remover_receita, atualizar_usuario, listar_usuario, atualizar_receita, listar_receita, remover_receita, relatorio_gastos_receitas
 from gastos import views
 
 urlpatterns = [
@@ -20,6 +20,7 @@ urlpatterns = [
     path('quem_somos/', quem_somos, name='quem_somos'),
     path('guia_completo/', guia_completo, name='guia_completo'),
     path('configuracoes/', configuracoes, name='configuracoes'),
-    path('home_logado/', home_logado, name='home_logado')
+    path('home_logado/', home_logado, name='home_logado'),
+    path('relatorio/', relatorio_gastos_receitas, name='relatorio_gastos_receitas'),
     
 ]
