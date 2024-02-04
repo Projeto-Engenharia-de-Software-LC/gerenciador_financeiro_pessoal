@@ -1,4 +1,3 @@
-<!-- gastos/templates/gastos/listar_gastos.html -->
 {% extends 'base_logado.html' %}
 
 {% block conteudo %} 
@@ -8,8 +7,8 @@
       <ul>
           {% for gasto in gastos %}
             <li>{{ gasto.categoria }} - {{ gasto.valor }} - {{ gasto.periodo }} 
-              <a href="{% url 'atualizar_gasto' pk=gasto.pk %}">Atualizar</a>
-              <a href="{% url 'remover_gasto' pk=gasto.pk %}">Remover</a>
+              <a href="{% url 'atualizar_usuario' pk=gasto.pk %}">Atualizar</a>
+             
               
             </li>
           {% endfor %}

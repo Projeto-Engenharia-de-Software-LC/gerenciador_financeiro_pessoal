@@ -32,9 +32,6 @@
             <li class="nav-item"> 
                 <a class="nav-link " href="{% url 'cadastrar_usuario' %}" tabindex="-1" aria-disabled="true">Cadastre-se</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'configuracoes' %}">Configurações</a>
-            </li>
             </ul>
         </div>
         </div>
@@ -44,33 +41,22 @@
     <div class="container px-4">
         <div class="row gx-5">
           <div class="col">
-           <div class="p-3 border bg-light">
-            <h1>Auxiliando o seu <br> bolso, em um <br>futuro organizado</h1>
-            <br>
-            <p>Organize o seu dinheiro e saia já das planilhas. Com o Boo assuma o controle das suas finanças.</p>
-             <img src= 'static/gastos/images/Icon_1.jpg' class="card-img-top" style="width: 5rem;" alt="Fale conosco!"/>
-             
+           <div class="p-3 border bg-light" >
+             {% block conteudo %}
+
+             {% endblock %}
         </div>
           </div>
-          
           <div class="col">
-            <div class="p-3 border bg-light">
-                <div class="card" style="width: auto;" >
-                    {% load static %}
-                    <img src="{% static 'gastos/images/tela _inicial.jpg' %}" class="card-img-top" alt="tela do app">
-                    <div class="card-body">
-                      <h5 class="card-title">Conheça o nosso site!</h5>
-                      <p class="card-text">Se voçe não tem cadastro. Cadastre-se agora!</p>
-                      <a href="#" class="btn btn-primary">Cadastre-se!</a>
-                    </div>
-                  </div>
+            <div class="p-3">
+              {% block conteudo1 %}
+
+              {% endblock %}
             </div>
           </div>
         </div>
       </div>
-    <!-- {% block conteudo %} -->
-
- <!--{% endblock %}-->
+   
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
