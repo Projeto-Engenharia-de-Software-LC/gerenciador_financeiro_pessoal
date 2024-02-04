@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import GastoForm, UsuarioForm, ReceitaForm, LoginForm
 from django.contrib.auth import authenticate, login  
-from .models import Gasto, Usuario, Receita
+from .models import Gasto, CustomUser, Receita
 
 def home(request):
     return render(request,'home.html')
@@ -37,45 +37,21 @@ def cadastrar_gasto(request):
         form = GastoForm()
     return render(request, 'cadastrar_gasto.html', {'form': form})
 
-def login_usuario(request):
-    if request.method == 'POST':
-        form = LoginForm(request, request.POST)
-        if form.is_valid():
-            login_usuario(request, form.get_user())
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login_usuario(request, user)
-                return redirect('home_logado')
-                
-    else:
-        form = LoginForm()
-    return render(request, 'login.html', {'form': form})
-
-def cadastrar_usuario(request):
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST)
-        if form.is_valid():
-            user= form.save()
-            return redirect('login')  # Substitua 'index' pelo nome da sua página inicial
-            login_usuario(request, user)
-    else:
-        form = UsuarioForm()
-    return render(request, 'cadastrar_usuario.html', {'form': form})
 
 def atualizar_usuario(request, pk):
-    username = get_object_or_404(Usuario, pk=pk)
+    username = get_object_or_404(CustomUser, pk=pk)
     if request.method == "POST":
         form = UsuarioForm(request.POST, instance=username)
         if form.is_valid():
             username = form.save(commit=False)
-            uusername.save()
+            username.save()
             return redirect('listar_usuario', pk=username.pk)
     else:
         form = UsuarioForm(instance=username)
     return render(request, 'atualizar_usuario.html', {'form': form})
 
 def listar_usuario(request):
-    usuario = Usuario.objects.all()
+    usuario = CustomUser.objects.all()
     return render(request, 'listar_usuario.html', {'usuario': usuario})
 
 def cadastrar_receita(request):
@@ -117,4 +93,4 @@ def configuracoes(request):
     return render(request,'configuracoes.html')
 
 def home_logado(request):
-    return render(request,'home_logado.html')
+    return render(request,'base_logado.html')

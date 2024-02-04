@@ -1,7 +1,8 @@
 # gastos/urls.py
 from django.urls import path
-from .views import home, listar_gastos, cadastrar_gasto, atualizar_gasto, remover_gasto, cadastrar_usuario, cadastrar_receita, login_usuario, quem_somos, guia_completo,configuracoes,home_logado,atualizar_usuario, listar_usuario, atualizar_receita, listar_receita, remover_receita, atualizar_usuario, listar_usuario, atualizar_receita, listar_receita, remover_receita
+from .views import home, listar_gastos, cadastrar_gasto, atualizar_gasto, remover_gasto, cadastrar_receita, quem_somos, guia_completo,configuracoes,home_logado,atualizar_usuario, listar_usuario, atualizar_receita, listar_receita, remover_receita, atualizar_usuario, listar_usuario, atualizar_receita, listar_receita, remover_receita
 from gastos import views
+from login.views import home, cadastrar_usuario, logar
 
 urlpatterns = [
     path('',home, name='home'),
@@ -16,7 +17,7 @@ urlpatterns = [
     path('atualizar_receita/', atualizar_receita, name='atualizar_receita'),
     path('listar_receita/', listar_receita, name='listar_receita'),
     path('deletar_receita/', remover_receita, name='deletar_receita'),
-    path('login/', login_usuario, name='login'),
+    path('login/', logar, name='login'),
     path('quem_somos/', quem_somos, name='quem_somos'),
     path('guia_completo/', guia_completo, name='guia_completo'),
     path('configuracoes/', configuracoes, name='configuracoes'),

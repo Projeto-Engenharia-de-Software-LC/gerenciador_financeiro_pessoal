@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Gasto, Usuario, Receita
+from .models import Gasto, CustomUser, Receita
 
 admin.site.register(Gasto)
-admin.site.register(Usuario)
+#admin.site.register(CustomUser)
 admin.site.register(Receita)
