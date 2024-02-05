@@ -5,11 +5,11 @@
   <div  style="text-align: center;"  class = "container" >
     <h2>Atualizar Gastos</h2>
 
-    <form method="post" action="{% url 'atualizar_gasto' pk=gasto.pk %}">
+    <form method="post" action="{% url 'atualizar_usuario' pk=gasto.pk %}">
       {% csrf_token %}
       {{ form.as_p }}
 
-      <button type="submit">Atualizar Gasto</button>
+      <button type="submit">Atualizar Dados</button>
       
     
 
@@ -17,5 +17,3 @@
 
   </div>
  {% endblock %}
-
-    

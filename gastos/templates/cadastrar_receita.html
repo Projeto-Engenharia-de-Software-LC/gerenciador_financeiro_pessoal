@@ -1,0 +1,17 @@
+{% extends 'base_home.html' %}
+
+{% block conteudo %} 
+
+        <div  style="text-align: center;"  class = "container" >
+            <h2>Cadastro de Receitas</h2>
+
+            <form method="post" action="{% url 'cadastrar_receita' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit">Cadastrar</button>
+            
+          
+
+            </form>
+ {% endblock %}
