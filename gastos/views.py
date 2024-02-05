@@ -71,7 +71,7 @@ def atualizar_usuario(request, pk):
         form = UsuarioForm(request.POST, instance=username)
         if form.is_valid():
             username = form.save(commit=False)
-            uusername.save()
+            username.save()
             return redirect('listar_usuario', pk=username.pk)
     else:
         form = UsuarioForm(instance=username)
