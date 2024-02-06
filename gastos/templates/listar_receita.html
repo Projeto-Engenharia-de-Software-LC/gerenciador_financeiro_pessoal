@@ -1,0 +1,20 @@
+{% extends 'base_logado.html' %}
+
+{% block conteudo %} 
+    <div  style="text-align: center;"  class = "container" >
+
+      <h2>Listagem de receitas</h2>
+      <ul>
+          {% for receita in receitas %}
+            <li>{{ receita.categoria }} - {{ receita.valor }} - {{ receita.periodo }} 
+              <a href="{% url 'atualizar_receita' pk=receita.pk %}">Atualizar</a>
+              <a href="{% url 'deletar_receita' pk=receita.pk %}">Remover</a>
+              
+            </li>
+          {% endfor %}
+        </ul>
+        
+    
+    </div>
+{% endblock %}     
+

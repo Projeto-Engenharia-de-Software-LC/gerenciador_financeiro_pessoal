@@ -1,0 +1,21 @@
+{% extends 'base_logado.html' %}
+
+{% block conteudo %} 
+
+  <div  style="text-align: center;"  class = "container" >
+    <h2>Atualizar Receita</h2>
+
+    <form method="post" action="{% url 'atualizar_receita' pk=gasto.pk %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button type="submit">Atualizar Receita</button>
+      
+    
+
+    </form>
+
+  </div>
+ {% endblock %}
+
+    

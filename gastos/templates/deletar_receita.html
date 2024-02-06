@@ -1,0 +1,12 @@
+{% extends 'base_logado.html' %}
+
+{% block conteudo %} 
+    <h1>Confirmar Remoção</h1>
+    <p>Você tem certeza que deseja remover a receita "{{ receita.categoria }}"?</p>
+    <form method="post" action="{% url 'deletar_receita' pk=receita.pk %}">
+        {% csrf_token %}
+        <input type="submit" value="Sim, remover">
+
+    </form>    
+    
+{% endblock%}
