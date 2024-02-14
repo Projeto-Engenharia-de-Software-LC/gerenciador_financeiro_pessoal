@@ -1,29 +1,111 @@
 {% extends 'base_home.html' %}
 
 {% block conteudo %}
-    
-    <h2>Relatório de Gastos e Receitas</h2>
-    <p>Gastos</p>
-        <ul>
-            {% for gasto in gastos %}
-                <li>{{ gasto.categoria }} - {{ gasto.valor }} - {{ gasto.periodo }} </li>
-            {% endfor %}
-        </ul>
-    
-    <p>Receitas</p>
-        <ul>
-            {% for receita in receitas %}
-                <li>{{ receita.categoria }} - {{ receita.valor }} - {{ receita.periodo }} </li>
-            {% endfor %}
-        </ul>
-    <p>Total de Gastos: R$ {{ total_gastos }}</p>
-    <p>Total de Receitas: R$ {{ total_receitas }}</p>
-    <p>Diferença: R$ {{ diferenca }}</p>
+
+    <div class="container">
+        <h2>Relatório de Gastos e Receitas</h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Gastos</h3>
+                <ul class="list-group">
+                    {% for gasto in gastos %}
+                        <li class="list-group-item">{{ gasto.categoria }} - R$ {{ gasto.valor }} - {{ gasto.periodo }}</li>
+                    {% endfor %}
+                </ul>
+                <p class="total">Total de Gastos: R$ {{ total_gastos }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Receitas</h3>
+                <ul class="list-group">
+                    {% for receita in receitas %}
+                        <li class="list-group-item">{{ receita.categoria }} - R$ {{ receita.valor }} - {{ receita.periodo }}</li>
+                    {% endfor %}
+                </ul>
+                <p class="total">Total de Receitas: R$ {{ total_receitas }}</p>
+            </div>
+        </div>
+
+        <h4 class="text-center font-weight-bold mt-3">Saldo Final: R$ {{ diferenca }}</h4>
+
+    </div>
 
 {% endblock %}
 
 {% block conteudo1 %}
-{% load static %}
-<img src= "{% static 'gastos/images/relatorios.png' %}" class="card-img-top" style="width: 500px" alt="relatório"/>
+    {% load static %}
+    <img src="{% static 'gastos/images/relatorios.png' %}" class="card-img-top" style="width: 500px" alt="relatório"/>
+{% endblock %}
 
+{% block graficoGasto %}
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ["Element", "Density", { role: "style" } ],
+            ["Copper", 8.94, "#b87333"],
+            ["Silver", 10.49, "silver"],
+            ["Gold", 19.30, "gold"],
+            ["Platinum", 21.45, "color: #e5e4e2"]
+          ]);
+
+          var view = new google.visualization.DataView(data);
+          view.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation" },
+                           2]);
+
+          var options = {
+            title: "Gastos",
+            width: 600,
+            height: 400,
+            bar: {groupWidth: "95%"},
+            legend: { position: "none" },
+          };
+          var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values_gasto"));
+          chart.draw(view, options);
+      }
+      </script>
+    <div id="columnchart_values_gasto" style="width: 900px; height: 300px;"></div>
+{% endblock %}
+
+{% block graficoReceita %}
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ["Element", "Density", { role: "style" } ],
+            ["Copper", 8.94, "#b87333"],
+            ["Silver", 10.49, "silver"],
+            ["Gold", 19.30, "gold"],
+            ["Platinum", 21.45, "color: #e5e4e2"]
+          ]);
+
+          var view = new google.visualization.DataView(data);
+          view.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation" },
+                           2]);
+
+          var options = {
+            title: "Receitas",
+            width: 600,
+            height: 400,
+            bar: {groupWidth: "95%"},
+            legend: { position: "none" },
+          };
+          var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+          chart.draw(view, options);
+      }
+      </script>
+    <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
 {% endblock %}
