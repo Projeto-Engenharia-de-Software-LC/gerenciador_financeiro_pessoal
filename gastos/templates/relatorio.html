@@ -73,9 +73,17 @@
                         ["Element", "valor R$", { role: "style" } ]
                     ]
 
-        for ( let i = 0; i < categorias_gastos.length; i++)
+        if ( categorias_gastos.length > 0)
         {
-            dadosg.push([ categorias_gastos[i], parseFloat(valores_gastos[i]), gerar_cor_aleaatoria()]);
+
+          for ( let i = 0; i < categorias_gastos.length; i++)
+          {
+              dadosg.push([ categorias_gastos[i], parseFloat(valores_gastos[i]), gerar_cor_aleaatoria()]);
+          }
+        }
+        else
+        {
+          dadosg.push([ "Sem gastos", 0, gerar_cor_aleaatoria()]);
         }
 
         function drawChart() {
@@ -130,11 +138,18 @@
                         ["Element", "valor R$", { role: "style" } ]
                     ]
 
-        for ( let i = 0; i < categorias_receita.length; i++)
+        
+        if ( categorias_gastos.length > 0)
         {
-            dadosr.push([ categorias_receita[i], parseFloat(valores_receita[i]), gerar_cor_aleaatoria()]);
+          for ( let i = 0; i < categorias_receita.length; i++)
+          {
+              dadosr.push([ categorias_receita[i], parseFloat(valores_receita[i]), gerar_cor_aleaatoria()]);
+          }
         }
-
+        else
+        {
+          dadosr.push([ "Sem gastos", 0, gerar_cor_aleaatoria()]);
+        }
 
         function drawChart() {
           var data = google.visualization.arrayToDataTable( dadosr);
