@@ -39,18 +39,47 @@
 {% endblock %}
 
 {% block graficoGasto %}
+      <script type="text/javascript">
+        var categorias_gastos = []
+        var valores_gastos = []
+      </script>
+      
+      {% for gasto in gastos %}
+            <script type="text/javascript">
+                categorias_gastos.push('{{ gasto.categoria }}');
+                valores_gastos.push('{{ gasto.valor }}');
+            </script>
+      {% endfor %}
+
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      
       <script type="text/javascript">
         google.charts.load("current", {packages:['corechart']});
         google.charts.setOnLoadCallback(drawChart);
+
+        function gerar_cor_aleaatoria() {
+            const letters = "0123456789abcdef";
+            let color = "color: #";
+          
+            for (let i = 0; i < 6; i++) {
+              color += letters[Math.floor(Math.random() * 16)];
+            }
+          
+          return color;
+        }
+
+
+        var dadosg = [
+                        ["Element", "valor R$", { role: "style" } ]
+                    ]
+
+        for ( let i = 0; i < categorias_gastos.length; i++)
+        {
+            dadosg.push([ categorias_gastos[i], parseFloat(valores_gastos[i]), gerar_cor_aleaatoria()]);
+        }
+
         function drawChart() {
-          var data = google.visualization.arrayToDataTable([
-            ["Element", "Density", { role: "style" } ],
-            ["Copper", 8.94, "#b87333"],
-            ["Silver", 10.49, "silver"],
-            ["Gold", 19.30, "gold"],
-            ["Platinum", 21.45, "color: #e5e4e2"]
-          ]);
+          var data = google.visualization.arrayToDataTable(dadosg);
 
           var view = new google.visualization.DataView(data);
           view.setColumns([0, 1,
@@ -75,18 +104,40 @@
 {% endblock %}
 
 {% block graficoReceita %}
+
+
+      <script type="text/javascript">
+        var categorias_receita = []
+        var valores_receita = []
+      </script>
+      
+      {% for receita in receitas %}
+            <script type="text/javascript">
+                categorias_receita.push('{{ receita.categoria }}');
+                valores_receita.push('{{ receita.valor }}');
+            </script>
+      {% endfor %}
+
+
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       <script type="text/javascript">
         google.charts.load("current", {packages:['corechart']});
         google.charts.setOnLoadCallback(drawChart);
+
+
+
+        var dadosr = [
+                        ["Element", "valor R$", { role: "style" } ]
+                    ]
+
+        for ( let i = 0; i < categorias_receita.length; i++)
+        {
+            dadosr.push([ categorias_receita[i], parseFloat(valores_receita[i]), gerar_cor_aleaatoria()]);
+        }
+
+
         function drawChart() {
-          var data = google.visualization.arrayToDataTable([
-            ["Element", "Density", { role: "style" } ],
-            ["Copper", 8.94, "#b87333"],
-            ["Silver", 10.49, "silver"],
-            ["Gold", 19.30, "gold"],
-            ["Platinum", 21.45, "color: #e5e4e2"]
-          ]);
+          var data = google.visualization.arrayToDataTable( dadosr);
 
           var view = new google.visualization.DataView(data);
           view.setColumns([0, 1,
