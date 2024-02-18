@@ -1,17 +1,31 @@
 {% extends 'base_home.html' %}
 
 {% block conteudo %} 
+<div class="container">
+    <div class="container px-4 w-50">
+        <h2 class="text-center">Cadastro de Usuário</h2>
+        <form method="post" action="{% url 'cadastrar_usuario' %}">
+            <div class="mb-3">
+                {% csrf_token %}
+            </div>
+                {% for field in form %} 
+                    <div class="mb-3">
+                        {% if field.label == "Username" %}
+                            <label for="{{ field.auto_id }}" class="form-label">Usuário</label>
+                            {{field}}
+                        {% elif field.label == "Password" %}
+                            <label for="{{ field.auto_id }}" class="form-label">Senha</label>
+                            {{field}}
+                        {% elif field.label == "Email" %}
+                            <label for="{{ field.auto_id }}" class="form-label">E-mail</label>
+                            {{field}}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            <div class="d-grid gap-2 my-5">
+                <button type="submit center" class="btn btn-secondary">Cadastrar</button>
+            </div>
+        </form>
+      </div>
 
-        <div  style="text-align: center;"  class = "container" >
-            <h2>Cadastro de Usuário</h2>
-
-            <form method="post" action="{% url 'cadastrar_usuario' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-
-                <button type="submit">Cadastrar</button>
-            
-          
-
-            </form>
  {% endblock %}
