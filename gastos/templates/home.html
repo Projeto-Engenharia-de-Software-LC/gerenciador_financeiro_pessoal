@@ -8,13 +8,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>BOO!</title>
+    <title>GFP!</title>
   </head>
    
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">BOO - Gerenciador Financeiro Pessoal</a>
+        <a class="navbar-brand" href="{% url 'home' %}"><img src= 'static/gastos/images/Logo GFP projeto.png' class="card-img-top" style="width: 6rem;"/></a>
+        <a class="navbar-brand" style="color: rgb(233, 145, 39); border-color: black; "   href="{% url 'home' %}"> Gerenciador Financeiro Pessoal</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,13 +28,13 @@
                 <a class="nav-link" href="{% url 'quem_somos' %}">Quem Somos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-link" style="color: green; border-color: black;" href="{% url 'login' %}">Login</a>
             </li>
             <li class="nav-item"> 
-                <a class="nav-link " href="{% url 'cadastrar_usuario' %}" tabindex="-1" aria-disabled="true">Cadastre-se</a>
+                <a class="btn btn-primary" href="{% url 'cadastrar_usuario' %}" >Cadastre-se</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'configuracoes' %}">Configurações</a>
+              <a class="nav-link" href="{% url 'configuracoes' %}">Lançamentos</a>
             </li>
             </ul>
         </div>
@@ -45,10 +46,10 @@
         <div class="row gx-5">
           <div class="col">
            <div class="p-3 border bg-light">
-            <h1>Auxiliando o seu <br> bolso, em um <br>futuro organizado</h1>
+            <h1>Auxiliando o </h1><h1 style="color: green;">seu bolso</h1> <h1 style="color: blue;">em um futuro </h1><h1>organizado</h1>
             <br>
-            <p>Organize o seu dinheiro e saia já das planilhas. Com o Boo assuma o controle das suas finanças.</p>
-             <img src= 'static/gastos/images/Icon_1.jpg' class="card-img-top" style="width: 5rem;" alt="Fale conosco!"/>
+            <p>Organize o seu dinheiro e saia já das planilhas. Com o GFP assuma o controle das suas finanças.</p>
+            
              
         </div>
           </div>
@@ -57,11 +58,9 @@
             <div class="p-3 border bg-light">
                 <div class="card" style="width: auto;" >
                     {% load static %}
-                    <img src="{% static 'gastos/images/tela _inicial.jpg' %}" class="card-img-top" alt="tela do app">
+                    <img src="{% static 'gastos/images/GFP (Scrow 1).png' %}" class="card-img-top"  alt="tela do app">
                     <div class="card-body">
-                      <h5 class="card-title">Conheça o nosso site!</h5>
-                      <p class="card-text">Se voçe não tem cadastro. Cadastre-se agora!</p>
-                      <a href="#" class="btn btn-primary">Cadastre-se!</a>
+                      <img src= 'static/gastos/images/Icon_1.jpg' class="card-img-top" style="width: 5rem;" alt="Fale conosco!"/>
                     </div>
                   </div>
             </div>

@@ -1,13 +1,23 @@
 {% extends 'base_logado.html' %}
 
+
 {% block conteudo %} 
     <div  style="text-align: center;"  class = "container" >
-        <h2>Administre suas despesas, O que deseja fazer?</h2>
-
-        <a href="{% url 'cadastrar_gasto' %}"><button type="submit" >Cadastrar Gasto</button></a>
-        <a href="{% url 'listar_gastos' %}"><button type="submit" >Atualizar Gasto</button></a>
-        <a href="{% url 'listar_gastos' %}"><button type="submit" >Listar Gasto</button></a>
-        
+        <br>
+        <h4 style="color: aliceblue;">Administre suas despesas</h4>
+        <br>
+        <div>
+        <a href="{% url 'cadastrar_gasto' %}"><button  class="btn btn-light" style="color: green;" type="submit" >Cadastrar Gasto</button></a>
+        </div>
+        <br>
+        <div>
+        <a href="{% url 'listar_gastos' %}"><button  class="btn btn-light" style="color: green;" type="submit" >Atualizar Gasto</button></a>
+        </div>
+        <br>
+        <div>
+        <a href="{% url 'listar_gastos' %}"><button  class="btn btn-light" style="color: green;" type="submit" >Listar Gasto</button></a>
+        </div>
+        <br>
       
     </div>
     
@@ -15,12 +25,15 @@
 
 {% block conteudo1 %} 
     <div  style="text-align: center;"  class = "container" >
-        <h2>Administre suas receitas, O que deseja fazer?</h2>
-
-        <a href="{% url 'cadastrar_receita' %}"><button type="submit" >Cadastrar Receita</button></a>
-        <a href="{% url 'listar_receita' %}"><button type="submit" >Atualizar Receita</button></a>
-        <a href="{% url 'listar_receita' %}"><button type="submit" >Listar Receita</button></a>
-        
+        <br>
+        <h4 style="color: aliceblue;">Administre suas receitas</h4>
+        <br>
+        <div><a href="{% url 'cadastrar_receita' %}"><button class="btn btn-light" style="color:blue;" type="submit" >Cadastrar Receita</button></a>
+        </div><br>
+        <div><a href="{% url 'listar_receita' %}"><button class="btn btn-light"  style="color:blue;" type="submit" >Atualizar Receita</button></a>
+        </div><br>
+        <div><a href="{% url 'listar_receita' %}"><button class="btn btn-light"  style="color:blue;" type="submit" >Listar Receita</button></a>
+        </div><br>
        
     
   
@@ -30,31 +43,26 @@
 
 {% block conteudo2 %} 
     <div  style="text-align: center;"  class = "container" >
-        <h2>Seus Dados</h2>
-        <a href="{% url 'atualizar_usuario' %}"><button type="submit" >Atualizar dados</button></a>
-       
+        <br>
+        <h4 style="color: aliceblue;">Seus Dados</h4>
+        <br>
+        <a href="#"><button class="btn btn-light" style="color:green;" type="submit" >Atualizar dados</button></a>
+        <br>
         
     </div>
-        
+    
 {% endblock %}
 
 {% block conteudo3 %} 
     <div  style="text-align: center;"  class = "container" >
-        <h2>Administre seus investimentos! O que deseja fazer?</h2>
+        <br>
+        <h4 style="color: aliceblue;">Relatórios</h4>
+        <br>
+        <a href="{% url 'relatorio_gastos_receitas' %}"><button class="btn btn-light" style="color: blue;" type="submit" >Exibir Relatório</button></a>
+        <br>
 
-        
-
-
-    </div>
-        
-{% endblock %}
-
-{% block conteudo4 %} 
-    <div  style="text-align: center;"  class = "container" >
-        <h2>Relatórios</h2>
-        <a href="{% url 'relatorio_gastos_receitas' %}"><button type="submit" >Exibir Relatório</button></a>
-       
-    
     </div> 
         
 {% endblock %}
+
+ 
