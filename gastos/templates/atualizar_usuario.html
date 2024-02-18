@@ -1,15 +1,15 @@
-{% extends 'base_logado.html' %}
+{% extends 'base_logado_conf.html' %}
 
 {% block conteudo %} 
 
   <div  style="text-align: center;"  class = "container" >
-    <h2>Atualizar Gastos</h2>
+    <h2>Atualizar dados</h2>
 
-    <form method="post" action="{% url 'atualizar_usuario' pk=gasto.pk %}">
+    <form method="post" action="{% url 'atualizar_usuario' pk=username.pk %}">
       {% csrf_token %}
       {{ form.as_p }}
 
-      <button type="submit">Atualizar Dados</button>
+      <button  class="btn btn-primary"type="submit">Atualizar Dados</button>
       
     
 

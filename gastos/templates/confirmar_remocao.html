@@ -1,11 +1,12 @@
-{% extends 'base_logado.html' %}
+{% extends 'base_logado_conf.html' %}
 
 {% block conteudo %} 
     <h1>Confirmar Remoção</h1>
-    <p>Você tem certeza que deseja remover o gasto "{{ gasto.descricao }}"?</p>
+    <p>Você tem certeza que deseja remover o gasto "{{ gasto.categoria }}"?</p>
     <form method="post" action="{% url 'remover_gasto' pk=gasto.pk %}">
         {% csrf_token %}
-        <input type="submit" value="Sim, remover">
+        <input  class="btn btn-primary" type="submit" value="Sim, remover">
+        <a class="btn btn-primary" href="{% url 'configuracoes' %}" >Cancelar</a>
 
     </form>    
     

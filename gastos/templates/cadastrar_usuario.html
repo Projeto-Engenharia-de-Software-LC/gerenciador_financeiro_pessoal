@@ -1,4 +1,4 @@
-{% extends 'base_home.html' %}
+{% extends 'base_logado_conf.html' %}
 
 {% block conteudo %} 
 
@@ -9,7 +9,8 @@
             {% csrf_token %}
             {{ form.as_p }}
 
-                <button type="submit">Cadastrar</button>
+                <button  class="btn btn-primary" type="submit">Cadastrar</button>
+                <a class="btn btn-primary" href="{% url 'home' %}" >Cancelar</a>
             
           
 

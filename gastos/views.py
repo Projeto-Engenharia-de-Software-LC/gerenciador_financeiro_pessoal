@@ -47,7 +47,7 @@ def login_usuario(request):
                 login(request, user)
                 user.is_staff = True
                 is_active=True
-                return redirect('home_logado')
+                return redirect('configuracoes')
                 
     else:
         form = LoginForm()
@@ -128,5 +128,8 @@ def guia_completo(request):
 def configuracoes(request):
     return render(request,'configuracoes.html')
 
-def home_logado(request):
-    return render(request,'home_logado.html')
+def ajuda(request):
+    return render(request,'ajuda.html')
+
+
+

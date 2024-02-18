@@ -1,0 +1,20 @@
+{% extends 'base_logado_conf.html' %}
+
+{% block conteudo %} 
+
+  <div  style="text-align: center;"  class = "container" >
+    <h2>Atualizar Receita</h2>
+
+    <form method="post" action="{% url 'atualizar_receita' pk=receita.pk %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button  class="btn btn-primary" type="submit">Atualizar Receita</button>
+      <a class="btn btn-primary" href="{% url 'configuracoes' %}" >Cancelar</a>
+      
+    
+
+    </form>
+
+  </div>
+ {% endblock %}

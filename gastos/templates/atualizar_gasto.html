@@ -1,4 +1,4 @@
-{% extends 'base_logado.html' %}
+{% extends 'base_logado_conf.html' %}
 
 {% block conteudo %} 
 
@@ -9,7 +9,9 @@
       {% csrf_token %}
       {{ form.as_p }}
 
-      <button type="submit">Atualizar Gasto</button>
+      <button class="btn btn-primary" type="submit">Atualizar Gasto</button>
+      <a class="btn btn-primary" href="{% url 'configuracoes' %}" >Cancelar</a>
+   
       
     
 

@@ -1,15 +1,19 @@
 {% extends 'base_home.html' %}
 
 {% block conteudo %} 
-    <h1>Quem Somos </h1>
+    <h1>Equipe </h1>
     <br>
-    <p>Uma equipe focada em desempenhar e <br>contribuir com a mudança no mundo. Uma <br>equipe cujo unico objetivo 
-    é trazer<br> conforto e praticidade para nossos clientes.</p>
-        
+    {% load static %}
+    <img src= "{% static 'gastos/images/equipe.png' %}"  class="card-img-top" style="width: 20rem;"/>
+    
  {% endblock %}
 
  {% block conteudo1 %} 
-    <h1>Quem Somos </h1>
-    <img src= 'image/people.png' class="card-img-top" style="width: 5rem;" alt=""/>
+    <h1 style="color: green;">Quem Somos </h1>
+    
+    <h4 >Uma equipe focada em desempenhar e contribuir</h4><h3 style="color: blue;"> com a mudança no mundo</h3><h4>cujo unico objetivo é trazer</h4>
+      <h3 style="color: green;"> conforto e praticidade para nossos clientes.</h3>
+          
+   
         
  {% endblock %}
