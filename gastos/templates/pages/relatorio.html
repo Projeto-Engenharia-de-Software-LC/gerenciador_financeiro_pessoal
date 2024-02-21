@@ -14,7 +14,32 @@
   </div>
   <div class="col">
     <div class="p-3 border bg-light">
-      <h5>Gastos</h5>
+      <h5 class="text-center ">Lançamentos</h5>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Categoria</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Periodo</th>
+            <th scope="col">Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for lancamento in lancamentos %}
+            {% if lancamento.tipo == "Gasto" %}
+              <tr class="table-danger">
+            {% elif lancamento.tipo == "Receita" %}
+              <tr class="table-success">
+            {% endif %}
+                <th scope="row">{{ lancamento.categoria }}</th>
+                <th scope="row">R$ {{ lancamento.valor }}</th>
+                <td>{{ lancamento.periodo|date:"d M, Y" }}</td>
+                <th scope="row">{{ lancamento.tipo }}</th>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <!-- <h5>Gastos</h5>
       <ul class="list-group">
         {% for gasto in gastos %}
         <li class="list-group-item">
@@ -33,7 +58,7 @@
         </li>
         {% endfor %}
       </ul>
-      <p class="total">Total de Receitas: R$ {{ total_receitas }}</p>
+      <p class="total">Total de Receitas: R$ {{ total_receitas }}</p> -->
       <h5 class="text-center font-weight-bold mt-3">
         Saldo Final: R$ {{ diferenca }}
       </h5>

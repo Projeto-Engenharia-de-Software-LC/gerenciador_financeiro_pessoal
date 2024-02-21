@@ -137,15 +137,21 @@ def relatorio_gastos_receitas(request):
     receitas = Receita.objects.filter(usuario=request.user.id)
     gastos = Gasto.objects.filter(usuario=request.user.id)
     
+    lancamentos = []
+
     total_receitas = 0
     total_gastos = 0
     
     for receita in receitas:
+        lancamentos.append({'categoria': receita.categoria,'valor': receita.valor,'periodo': receita.periodo,'tipo': "Receita",})
         total_receitas += receita.valor
         
     for gasto in gastos:
+        lancamentos.append({'categoria': gasto.categoria,'valor': gasto.valor,'periodo': gasto.periodo,'tipo': "Gasto",})
         total_gastos += gasto.valor
     
+    lancamentos = sorted(lancamentos, key=lambda d: d['periodo'])
+
     diferenca = total_receitas - total_gastos
 
-    return render(request, 'pages/relatorio.html', {'receitas':receitas,'gastos': gastos,'total_gastos': total_gastos, 'total_receitas': total_receitas, 'diferenca': diferenca})
+    return render(request, 'pages/relatorio.html', {'receitas':receitas,'gastos': gastos,'total_gastos': total_gastos, 'total_receitas': total_receitas, 'diferenca': diferenca, 'lancamentos': lancamentos})
