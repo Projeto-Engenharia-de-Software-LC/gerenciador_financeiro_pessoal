@@ -22,8 +22,8 @@
         {% for receita in receitas %}
           <tr class="table-success">
             <th scope="row">{{ receita.categoria }}</th>
-            <th scope="row">{{ receita.valor }}</th>
-            <td>{{ receita.periodo }}</td>
+            <th scope="row">R$ {{ receita.valor }}</th>
+            <td>{{ receita.periodo|date:"d M, Y" }}</td>
             <td>
               <a class="btn btn-dark" href="{% url 'atualizar_receita' pk=receita.pk %}">Atualizar</a>
               <a class="btn btn-danger"href="{% url 'deletar_receita' pk=receita.pk %}">Remover</a>

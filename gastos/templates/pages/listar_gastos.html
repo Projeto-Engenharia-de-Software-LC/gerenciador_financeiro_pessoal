@@ -22,8 +22,8 @@
         {% for gasto in gastos %}
           <tr class="table-danger">
             <th scope="row">{{ gasto.categoria }}</th>
-            <th scope="row">{{ gasto.valor }}</th>
-            <td>{{ gasto.periodo }}</td>
+            <th scope="row">R$ {{ gasto.valor }}</th>
+            <td>{{ gasto.periodo|date:"d M, Y" }}</td>
             <td>
               <a class="btn btn-dark" href="{% url 'atualizar_receita' pk=gasto.pk %}">Atualizar</a>
               <a class="btn btn-Danger"href="{% url 'deletar_receita' pk=gasto.pk %}">Remover</a>
