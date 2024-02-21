@@ -1,0 +1,34 @@
+{% extends '../index.html' %}
+
+{% block conteudo %}
+<div class="container px-4 w-50">
+    <title>Login</title>
+    <h2 class="text-center">Login</h2>
+    <form method="post" action="{% url 'login' %}">
+        <div class="mb-3">
+            {% csrf_token %}
+        </div>
+        {% for field in form %} 
+            <div class="mb-3">
+                {% if field.label == "Username" %}
+                    <label for="{{ field.auto_id }}" class="form-label">Usuário</label>
+                    {{field}}
+                {% elif field.label == "Password" %}
+                    <label for="{{ field.auto_id }}" class="form-label">Senha</label>
+                    {{field}}
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% if form.non_field_errors %}
+            <ul class='form-errors'>
+                {% for error in form.non_field_errors %}
+                    <li class="text-danger">Usuário e/ou senha preencido(s) com erro. Por gentileza, tentar novamente.</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="d-grid gap-2 my-5">
+            <button type="submit center" class="btn btn-secondary">Entrar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

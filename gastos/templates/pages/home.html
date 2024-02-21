@@ -1,0 +1,27 @@
+{% extends '../index.html' %}
+{% load static %}
+
+{% block conteudo %}
+    <div class="row gx-5">
+        <div class="col">
+        <div class="p-3 border bg-light">
+        <h1>Auxiliando o </h1><h1 style="color: green;">seu bolso</h1> <h1 style="color: blue;">em um futuro </h1><h1>organizado</h1>
+        <br>
+        <p>Organize o seu dinheiro e saia já das planilhas. Com o GFP assuma o controle das suas finanças.</p>
+        
+        
+    </div>
+        </div>
+        
+        <div class="col">
+        <div class="p-3 border bg-light">
+            <div class="card" style="width: auto;" >
+                <img src="{% static 'gastos/images/GFP (Scrow 1).png' %}" class="card-img-top"  alt="tela do app">
+                <div class="card-body">
+                    <img src= 'static/gastos/images/Icon_1.jpg' class="card-img-top" style="width: 5rem;" alt="Fale conosco!"/>
+                </div>
+                </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

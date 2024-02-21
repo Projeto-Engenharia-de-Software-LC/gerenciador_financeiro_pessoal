@@ -1,12 +1,12 @@
 # gastos/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import GastoForm, UsuarioForm, ReceitaForm, LoginForm
-from django.contrib.auth import authenticate, login  
-from .models import Gasto, Usuario, Receita
+from django.contrib.auth import authenticate, login, logout   
+from .models import Gasto, Receita
 from django.db.models import Sum
 
 def home(request):
-    return render(request,'home.html')
+    return render(request,'pages/home.html')
 
 def atualizar_gasto(request, pk):
     gasto = Gasto.objects.get(pk=pk)
@@ -37,33 +37,6 @@ def cadastrar_gasto(request):
     else:
         form = GastoForm()
     return render(request, 'cadastrar_gasto.html', {'form': form})
-
-def login_usuario(request):
-    if request.method == 'POST':
-        form = LoginForm(request, request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            if user is not None:
-                login(request, user)
-                user.is_staff = True
-                is_active=True
-                return redirect('configuracoes')
-                
-    else:
-        form = LoginForm()
-    return render(request, 'login.html', {'form': form})
-
-def cadastrar_usuario(request):
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST)
-        if form.is_valid():
-            user= form.save()
-            #login_usuario(request, user)
-            return redirect('login')  # Substitua 'index' pelo nome da sua página inicial
-            
-    else:
-        form = UsuarioForm()
-    return render(request, 'cadastrar_usuario.html', {'form': form})
 
 def atualizar_usuario(request, pk):
     username = get_object_or_404(Usuario, pk=pk)
@@ -133,3 +106,43 @@ def ajuda(request):
 
 
 
+
+
+def login_usuario(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user:
+                login(request, user)    
+                return redirect('home')
+    else:
+        form = LoginForm()
+    return render(request, 'pages/login.html', {'form': form})
+
+def cadastrar_usuario(request):
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UsuarioForm()
+    return render(request, 'pages/signup.html', {'form': form})
+
+def sair(request):
+    logout(request)
+    return redirect('login')
+
+def atualizar_usuario(request, pk):
+    if request.method == "POST":
+        form = UsuarioForm(request.POST, instance=username)
+        if form.is_valid():
+            username = form.save(commit=False)
+            username.save()
+            return redirect('listar_usuario', pk=username.pk)
+    else:
+        form = UsuarioForm(instance=username)
+    return render(request, 'atualizar_usuario.html', {'form': form})

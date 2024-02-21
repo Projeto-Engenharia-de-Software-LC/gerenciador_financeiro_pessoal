@@ -138,8 +138,6 @@ MEDIA_URL = '/images/'
 LOGIN_REDIRECT_URL = '/home_logado'
 LOGOUT_REDIRECT_URL = '/'
 
-AUTH_USER_MODEL = "gastos.CustomUser" 
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

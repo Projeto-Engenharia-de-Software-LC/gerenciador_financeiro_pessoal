@@ -1,0 +1,43 @@
+{% load static %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}"><img src= "{% static 'gastos/images/Logo GFP projeto.png' %}"  class="card-img-top" style="width: 6rem;"/></a>
+            <a class="navbar-brand" style="color: rgb(233, 145, 39); border-color: black; "   href="{% url 'home' %}"> Gerenciador Financeiro Pessoal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'guia_completo' %}">Guia Completo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'quem_somos' %}">Quem Somos</a>
+                    </li>
+                </ul>
+                
+                <ul class="nav navbar-nav ml-5">
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link " href="{% url 'configuracoes' %}" tabindex="-1" aria-disabled="true">Lançamentos</a>
+                        </li>
+                        <li class="nav-item ">
+                            <p>{{ request.user.username }}</p></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: green;" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item"> 
+                        <a href="{% url 'cadastrar_usuario' %}" class="btn btn-primary">Cadastre-se!</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
