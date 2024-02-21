@@ -1,0 +1,23 @@
+runtime: python39
+env: standard
+
+handlers:
+  - url: /static
+    static_dir: gastos/static/
+
+  - url: /.*
+    script: auto
+    
+
+env_variables:
+  APPENGINE_URL: https://gfp-ufrpe.rj.r.appspot.com
+  SECRET_KEY: 'django-insecure-oa#)5r000#cv8e&p_+-nae2fl)*m2d)(ab@vcx5^xz^u)jm=b)'
+
+  DATABASE_HOST: 'srv792.hstgr.io'
+  DATABASE_NAME: 'u755725258_UFRPE_ENG_SOF'
+  DATABASE_USER: 'u755725258_admin'
+  DATABASE_PASSWORD: 'q7PW2+C9@'
+
+
+runtime_config:
+  python_version: 3
