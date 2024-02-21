@@ -24,13 +24,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Lançamentos</a>
+                <a class="nav-link" href="{% url 'configuracoes' %}">Lançamentos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Ajuda</a>
-            </li>
-            <li class="nav-item"> 
-                <a class="nav-link " href="{% url 'configuracoes' %}" tabindex="-1" aria-disabled="true">Configurações</a>
+                <a class="nav-link" href="{% url 'ajuda' %}">Ajuda</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'home' %}">Sair</a>
@@ -50,7 +47,7 @@
                       {% for receita in receitas %}
                         <li>{{ receita.categoria }} - {{ receita.valor }} - {{ receita.periodo }} 
                           <a class="btn btn-primary" href="{% url 'atualizar_receita' pk=receita.pk %}">Atualizar</a>
-                          <a class="btn btn-primary"href="{% url 'deletar_receita' pk=receita.pk %}">Remover</a>
+                          <a class="btn btn-primary" href="{% url 'deletar_receita' pk=receita.pk  %}">Remover</a>
                         </li>
                         <br>
                       {% endfor %}

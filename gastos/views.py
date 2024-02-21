@@ -38,6 +38,7 @@ def cadastrar_gasto(request):
         form = GastoForm()
     return render(request, 'cadastrar_gasto.html', {'form': form})
 
+
 def login_usuario(request):
     if request.method == 'POST':
         form = LoginForm(request, request.POST)
@@ -48,7 +49,7 @@ def login_usuario(request):
                 user.is_staff = True
                 is_active=True
                 return redirect('configuracoes')
-                
+              
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})

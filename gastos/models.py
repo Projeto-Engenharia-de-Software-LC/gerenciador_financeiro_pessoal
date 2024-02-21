@@ -3,10 +3,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 
 
+
 class CustomUser(AbstractUser):
     # Adicione campos personalizados, se necessário
     pass
-    
 
 class Usuario(models.Model):
     username = models.CharField(max_length=255)

@@ -128,7 +128,8 @@ MEDIA_URL = '/images/'
 LOGIN_REDIRECT_URL = '/home_logado'
 LOGOUT_REDIRECT_URL = '/'
 
-AUTH_USER_MODEL = "gastos.CustomUser" 
+AUTH_USER_MODEL = "gastos.CustomUser"
+
 
 
 # Default primary key field type

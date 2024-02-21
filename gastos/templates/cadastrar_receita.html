@@ -15,4 +15,18 @@
           
 
             </form>
+        </div>
  {% endblock %}
+
+ {% block conteudo1%} 
+        {% load static %}
+    
+        <img src="{% static 'gastos/images/gasto.jpg' %}" class="card-img-top" style="width: 28rem;" >
+        <br><br>
+        <p>Deseja cadastrar uma despesa?</p>
+        
+        <a class="btn btn-primary" href="{% url 'cadastrar_gasto' %}" >Cadastro de gastos</a>
+                    
+                  
+
+    {% endblock %}
