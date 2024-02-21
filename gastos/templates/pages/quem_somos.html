@@ -1,0 +1,27 @@
+{% extends '../index.html' %}
+{% load static %}
+
+{% block conteudo %} 
+<div class= row gx-5 >
+   <div class="col" >
+     <div class="p-3 border bg-light ">
+      <h1>Equipe </h1>
+      <br>
+
+      <img src= "{% static 'gastos/images/equipe.png' %}"  class="card-img-top" style="width: 20rem;"/>
+     </div>
+   </div>
+   <div class="col">
+     <div class="p-3 border bg-light">
+      <h1 style="color: green;">Quem Somos </h1>
+    
+      <h4 >Uma equipe focada em desempenhar e contribuir</h4><h3 style="color: blue;"> com a mudança no mundo</h3><h4>cujo unico objetivo é trazer</h4>
+        <h3 style="color: green;"> conforto e praticidade para nossos clientes.</h3>
+            
+     </div>
+   </div>
+ </div>
+        
+ {% endblock %}
+
+

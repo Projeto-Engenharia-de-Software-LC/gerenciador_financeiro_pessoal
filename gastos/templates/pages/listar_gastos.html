@@ -1,0 +1,37 @@
+{% extends '../index.html' %}
+{% load static %}
+
+{% block conteudo %}
+<div class="container  gx-5 w-75">
+  <div class="p-3  border bg-light">
+    <div class="row">
+      <div class="col-sm-9 col-md-9 text-center"><h4>Listagem de Gastos</h4></div>
+      <div class="col-2 col-md-2"><a class="btn btn-Warning" href="{% url 'painel' %}" >Voltar</a></div>
+    </div>
+    <br>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Categoria</th>
+          <th scope="col">Valor</th>
+          <th scope="col">Periodo</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for gasto in gastos %}
+          <tr class="table-danger">
+            <th scope="row">{{ gasto.categoria }}</th>
+            <th scope="row">{{ gasto.valor }}</th>
+            <td>{{ gasto.periodo }}</td>
+            <td>
+              <a class="btn btn-dark" href="{% url 'atualizar_receita' pk=gasto.pk %}">Atualizar</a>
+              <a class="btn btn-Danger"href="{% url 'deletar_receita' pk=gasto.pk %}">Remover</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+{% endblock %}

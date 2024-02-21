@@ -1,0 +1,198 @@
+{% extends '../index.html' %} {% load static %} {% block conteudo %}
+<div class="row gx-5">
+  <div class="col">
+    <div class="p-3 border bg-light">
+      <h3>Gastos X Receitas</h3>
+      {% load static %}
+      <img
+        src="{% static 'gastos/images/relatorios.png' %}"
+        class="card-img-top"
+        style="width: 400px; height: 250px"
+        alt="relatório"
+      />
+    </div>
+  </div>
+  <div class="col">
+    <div class="p-3 border bg-light">
+      <h5>Gastos</h5>
+      <ul class="list-group">
+        {% for gasto in gastos %}
+        <li class="list-group-item">
+          {{ gasto.categoria }} - R$ {{ gasto.valor }} - {{ gasto.periodo }}
+        </li>
+        {% endfor %}
+      </ul>
+      <p class="total">Total de Gastos: R$ {{ total_gastos }}</p>
+
+      <h5>Receitas</h5>
+      <ul class="list-group">
+        {% for receita in receitas %}
+        <li class="list-group-item">
+          {{ receita.categoria }} - R$ {{ receita.valor }} - {{ receita.periodo
+          }}
+        </li>
+        {% endfor %}
+      </ul>
+      <p class="total">Total de Receitas: R$ {{ total_receitas }}</p>
+      <h5 class="text-center font-weight-bold mt-3">
+        Saldo Final: R$ {{ diferenca }}
+      </h5>
+    </div>
+  </div>
+</div>
+
+<div class="row gx-5">
+  <div class="col">
+    <div class="p-3 border bg-light">
+      <script type="text/javascript">
+        var categorias_gastos = [];
+        var valores_gastos = [];
+      </script>
+
+      {% for gasto in gastos %}
+      <script type="text/javascript">
+        categorias_gastos.push("{{ gasto.categoria }}");
+        valores_gastos.push("{{ gasto.valor }}");
+      </script>
+      {% endfor %}
+
+      <script
+        type="text/javascript"
+        src="https://www.gstatic.com/charts/loader.js"
+      ></script>
+
+      <script type="text/javascript">
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function gerar_cor_aleaatoria() {
+          const letters = "0123456789abcdef";
+          let color = "color: #";
+
+          for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+          }
+
+          return color;
+        }
+
+        var dadosg = [["Element", "valor R$", { role: "style" }]];
+
+        if (categorias_gastos.length > 0) {
+          for (let i = 0; i < categorias_gastos.length; i++) {
+            dadosg.push([
+              categorias_gastos[i],
+              parseFloat(valores_gastos[i]),
+              gerar_cor_aleaatoria(),
+            ]);
+          }
+        } else {
+          dadosg.push(["Sem gastos", 0, gerar_cor_aleaatoria()]);
+        }
+
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable(dadosg);
+
+          var view = new google.visualization.DataView(data);
+          view.setColumns([
+            0,
+            1,
+            {
+              calc: "stringify",
+              sourceColumn: 1,
+              type: "string",
+              role: "annotation",
+            },
+            2,
+          ]);
+
+          var options = {
+            title: "Gastos",
+            width: 450,
+            height: 300,
+            bar: { groupWidth: "95%" },
+            legend: { position: "none" },
+          };
+          var chart = new google.visualization.ColumnChart(
+            document.getElementById("columnchart_values_gasto")
+          );
+          chart.draw(view, options);
+        }
+      </script>
+      <div
+        id="columnchart_values_gasto"
+        style="width: 400px; height: 300px"
+      ></div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="p-3 border bg-light">
+      <script type="text/javascript">
+        var categorias_receita = [];
+        var valores_receita = [];
+      </script>
+
+      {% for receita in receitas %}
+      <script type="text/javascript">
+        categorias_receita.push("{{ receita.categoria }}");
+        valores_receita.push("{{ receita.valor }}");
+      </script>
+      {% endfor %}
+
+      <script
+        type="text/javascript"
+        src="https://www.gstatic.com/charts/loader.js"
+      ></script>
+      <script type="text/javascript">
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        var dadosr = [["Element", "valor R$", { role: "style" }]];
+
+        if (categorias_gastos.length > 0) {
+          for (let i = 0; i < categorias_receita.length; i++) {
+            dadosr.push([
+              categorias_receita[i],
+              parseFloat(valores_receita[i]),
+              gerar_cor_aleaatoria(),
+            ]);
+          }
+        } else {
+          dadosr.push(["Sem gastos", 0, gerar_cor_aleaatoria()]);
+        }
+
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable(dadosr);
+
+          var view = new google.visualization.DataView(data);
+          view.setColumns([
+            0,
+            1,
+            {
+              calc: "stringify",
+              sourceColumn: 1,
+              type: "string",
+              role: "annotation",
+            },
+            2,
+          ]);
+
+          var options = {
+            title: "Receitas",
+            width: 450,
+            height: 300,
+            bar: { groupWidth: "95%" },
+            legend: { position: "none" },
+          };
+          var chart = new google.visualization.ColumnChart(
+            document.getElementById("columnchart_values")
+          );
+          chart.draw(view, options);
+        }
+      </script>
+      <div id="columnchart_values" style="width: 400px; height: 300px"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
