@@ -1,11 +1,14 @@
 {% extends '../index.html' %}
+{% load static %}
+
 
 {% block conteudo %}
 <div style="display:flex; justify-content: center;">
-    <img  src="{% static 'gastos/images/usuario.png' %}" class="card-img-top" style="width: 15rem;" >
+    <img  src="{% static 'gastos/images/usuario.png' %}" class="card-img-top" style="width: 5rem;" >
 </div>
+<br>
 <div class="container px-4 w-50">
-    <h2 class="text-center">Cadastro de Usuário</h2>
+    <h2 class="text-center">Cadastre-se</h2>
     <form method="post">
         <div class="mb-3">
             {% csrf_token %}
