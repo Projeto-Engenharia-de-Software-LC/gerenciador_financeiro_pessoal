@@ -140,8 +140,9 @@
             height: 300,
             bar: {groupWidth: "95%"},
             legend: { position: "none" },
+            is3D: true,
           };
-          var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values_gasto"));
+          var chart = new google.visualization.PieChart(document.getElementById("columnchart_values_gasto"));
           chart.draw(view, options);
       }
         </script>
@@ -207,8 +208,9 @@
               height: 300,
               bar: {groupWidth: "95%"},
               legend: { position: "none" },
+              is3D: true,
             };
-            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+            var chart = new google.visualization.PieChart(document.getElementById("columnchart_values"));
             chart.draw(view, options);
         }
         </script>
