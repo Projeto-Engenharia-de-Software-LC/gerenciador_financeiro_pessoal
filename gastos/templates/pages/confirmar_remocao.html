@@ -1,0 +1,17 @@
+{% extends '../index.html' %}
+
+{% block conteudo %} 
+<div class="row  gx-5 ">
+    <div class="p-3  border bg-light">
+        <h1>Confirmar Remoção</h1>
+        <p>Você tem certeza que deseja remover o gasto "{{ gasto.categoria }}"?</p>
+        <form method="post" action="{% url 'remover_gasto' pk=gasto.pk %}">
+            {% csrf_token %}
+            <input  class="btn btn-primary" type="submit" value="Sim, remover">
+            <a class="btn btn-primary" href="{% url 'painel' %}" >Cancelar</a>
+    
+        </form>    
+    </div>
+  </div>
+{% endblock%}
+

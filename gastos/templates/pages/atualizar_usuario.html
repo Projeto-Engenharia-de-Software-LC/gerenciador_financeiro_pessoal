@@ -1,0 +1,43 @@
+{% extends '../index.html' %} 
+
+{% block conteudo %}
+  <div class="container px-4 w-50">
+    {% if form.errors %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+          <div id="form_errors">
+              {% for key, value in form.errors.items %}
+                  <strong>{{ value }}</strong>
+              {% endfor %}
+          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    {% endif %}
+
+    <div class="row gx-5">
+      <div class="p-3 border bg-light">
+        <div style="text-align: center" class="container">
+          <h2>Atualizar dados</h2>
+
+          <form method="post" action="{% url 'atualizar_usuario' %}">
+            {% csrf_token %} 
+
+            {% for field in form %} 
+            <div class="mb-3">
+                {% if field.label != "Password" %}
+                    <label for="{{ field.auto_id }}" class="form-label">{{field.label}}</label>
+                    {{field}}
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <button class="btn btn-primary" type="submit">Atualizar Dados</button>
+            <button type="reset" class="btn btn-dark">Desfazer</button>
+            <a class="btn btn-danger" href="{% url 'painel' %}" >Cancelar</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends '../index.html' %}
+
+
+{% block conteudo %} 
+  <div class="container gx-5 w-50">
+    <div class="p-3  border bg-light">
+      <div  style="text-align: center;"  class = "container" >
+        <h2>Atualizar Gastos</h2>
+    
+        <form method="post" action="{% url 'atualizar_gasto' pk=gasto.pk %}">
+          
+          {% csrf_token %}
+          {{ form.as_p }}
+    
+          <button class="btn btn-primary" type="submit">Atualizar Gasto</button>
+          <a class="btn btn-primary" href="{% url 'painel' %}" >Cancelar</a>
+    
+        </form>
+    
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+    
+

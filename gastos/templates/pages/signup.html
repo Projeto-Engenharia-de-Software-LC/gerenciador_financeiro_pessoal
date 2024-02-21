@@ -1,0 +1,35 @@
+{% extends '../index.html' %}
+{% load static %}
+
+
+{% block conteudo %}
+<div style="display:flex; justify-content: center;">
+    <img  src="{% static 'gastos/images/usuario.png' %}" class="card-img-top" style="width: 5rem;" >
+</div>
+<br>
+<div class="container px-4 w-50">
+    <h2 class="text-center">Cadastre-se</h2>
+    <form method="post">
+        <div class="mb-3">
+            {% csrf_token %}
+        </div>
+            {% for field in form %} 
+            <div class="mb-3">
+                    {% if field.label == "Username" %}
+                        <label for="{{ field.auto_id }}" class="form-label">Usuário</label>
+                        {{field}}
+                    {% elif field.label == "Email address" %}
+                        <label for="{{ field.auto_id }}" class="form-label">E-mail</label>
+                        {{field}}
+                    {% elif field.label == "Password" %}
+                        <label for="{{ field.auto_id }}" class="form-label">Senha</label>
+                        {{field}}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        <div class="d-grid gap-2 my-5">
+            <button type="submit center" class="btn btn-secondary">Cadastrar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

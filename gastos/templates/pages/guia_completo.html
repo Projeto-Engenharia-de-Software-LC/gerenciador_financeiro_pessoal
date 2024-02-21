@@ -1,0 +1,22 @@
+{% extends '../index.html' %}
+{% load static %}
+
+
+{% block conteudo %} 
+<div class= row gx-5 >
+    <div class="col" >
+      <div class="p-3 border bg-light ">
+        <h3 style="color: green;">A ajuda que você precisa para se organizar</h3>
+        <br>
+        <img src= "{% static 'gastos/images/GFP (Scrow 2)p.png' %}"  class="card-img-top" style="width: 16rem;"/>
+      </div>
+    </div>
+    <div class="col">
+      <div class="p-3 border bg-light">
+        <h3 style="color: green;">Detalhamento sobre o seu aproveitamento</h3>
+        <img src= "{% static 'gastos/images/GFP (Scrow 2)g.png' %}"  class="card-img-top"  />
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

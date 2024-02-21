@@ -1,0 +1,60 @@
+{% extends '../index.html' %}
+{% load static %}
+
+
+{% block conteudo %} 
+<div class="row row-cols-4">
+    <div class="col ">
+      <div class="p-3 border bg-primary " >
+        <div  style="text-align: center;"  class = "container" >
+            <br>
+            <h4 style="color: aliceblue;">Administre suas despesas</h4>
+            <br>
+            <div>
+            <a href="{% url 'cadastrar_gasto' %}"><button  class="btn btn-light" style="color: green;" type="submit" >Cadastrar Gasto</button></a>
+            </div>
+            <br>
+            <div>
+            </div>
+            <br>
+            <div>
+            <a href="{% url 'listar_gastos' %}"><button  class="btn btn-light" style="color: green;" type="submit" >Listar Gasto</button></a>
+            </div>
+            <br>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="p-3 border bg-success ">
+        <div  style="text-align: center;"  class = "container" >
+            <br>
+            <h4 style="color: aliceblue;">Administre suas receitas</h4>
+            <br>
+            <div><a href="{% url 'cadastrar_receita' %}"><button class="btn btn-light" style="color:blue;" type="submit" >Cadastrar Receita</button></a>
+            </div><br>
+            <div>
+            </div><br>
+            <div><a href="{% url 'listar_receita' %}"><button class="btn btn-light"  style="color:blue;" type="submit" >Listar Receita</button></a>
+            </div><br>
+           
+        
+      
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="p-3 border bg-success">
+        <div  style="text-align: center;"  class = "container" >
+            <br>
+            <h4 style="color: aliceblue;">Relatórios</h4>
+            <br>
+            <a href="{% url 'relatorio_gastos_receitas' %}"><button class="btn btn-light" style="color: blue;" type="submit" >Exibir Relatório</button></a>
+            <br>
+    
+        </div> 
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
